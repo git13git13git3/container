@@ -1,4 +1,4 @@
 lan_ip,device_name,status,created_date,notes
-127.0.0.1,Localhost,allowed,2026-06-15,Local machine only - always allowed
-192.168.1.001,Main Device,allowed,2026-06-15,Primary workstation - 
-192.168.1.100,Guest Device,blocked,2026-06-15,Guest device - 
+127.0.0.1,Localhost,allowed,2026-06-15,Local machine - always allowed - never modify
+192.168.1.1,Main Device,allowed,2026-06-15,Primary workstation - requires approval to change
+192.168.1.100,Guest Device,blocked,2026-06-15,Guest device - request unblock from admin
