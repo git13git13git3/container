@@ -1,0 +1,56 @@
+{
+  "name": "lan-proxy-registration-gate",
+  "version": "1.0.0",
+  "description": "Secure LAN proxy with email-based MFA and device registration",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "test": "jest --runInBand --verbose --coverage",
+    "test:watch": "jest --watch",
+    "test:security": "npm run test -- --testNamePattern='security'",
+    "test:integration": "npm run test -- --testNamePattern='integration'",
+    "test:email": "npm run test -- --testNamePattern='email'",
+    "lint": "eslint . --ext .js",
+    "pretest": "eslint register.js server.js email-based-mfa.js email-service.js || true"
+  },
+  "keywords": ["proxy", "mfa", "email", "registration", "security"],
+  "author": "git9git9git9",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-session": "^1.17.3",
+    "cookie-parser": "^1.4.6",
+    "csurf": "^1.11.0",
+    "express-rate-limit": "^7.1.5",
+    "http-proxy-middleware": "^2.0.6",
+    "nodemailer": "^6.9.7",
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "supertest": "^6.3.3",
+    "sinon": "^17.0.1",
+    "eslint": "^8.50.0",
+    "nyc": "^15.1.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "register.js",
+      "server.js",
+      "email-based-mfa.js",
+      "email-service.js",
+      "!node_modules/**"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 85,
+        "functions": 90,
+        "lines": 90,
+        "statements": 90
+      }
+    },
+    "testMatch": ["**/__tests__/**/*.test.js"],
+    "timeout": 10000
+  }
+}
